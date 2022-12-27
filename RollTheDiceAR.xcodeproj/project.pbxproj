@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F35820E295B95D7008D3936 /* RollTheDiceARApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35820D295B95D7008D3936 /* RollTheDiceARApp.swift */; };
+		2F35820E295B95D7008D3936 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35820D295B95D7008D3936 /* AppMain.swift */; };
 		2F358210295B95D7008D3936 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35820F295B95D7008D3936 /* ContentView.swift */; };
 		2F358212295B95D8008D3936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F358211295B95D8008D3936 /* Assets.xcassets */; };
 		2F358215295B95D8008D3936 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F358214295B95D8008D3936 /* Preview Assets.xcassets */; };
@@ -15,7 +15,7 @@
 
 /* Begin PBXFileReference section */
 		2F35820A295B95D7008D3936 /* RollTheDiceAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollTheDiceAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F35820D295B95D7008D3936 /* RollTheDiceARApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollTheDiceARApp.swift; sourceTree = "<group>"; };
+		2F35820D295B95D7008D3936 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		2F35820F295B95D7008D3936 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F358211295B95D8008D3936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F358214295B95D8008D3936 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		2F35820C295B95D7008D3936 /* RollTheDiceAR */ = {
 			isa = PBXGroup;
 			children = (
-				2F35820D295B95D7008D3936 /* RollTheDiceARApp.swift */,
+				2F35820D295B95D7008D3936 /* AppMain.swift */,
 				2F35820F295B95D7008D3936 /* ContentView.swift */,
 				2F358211295B95D8008D3936 /* Assets.xcassets */,
 				2F358213295B95D8008D3936 /* Preview Content */,
@@ -138,7 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F358210295B95D7008D3936 /* ContentView.swift in Sources */,
-				2F35820E295B95D7008D3936 /* RollTheDiceARApp.swift in Sources */,
+				2F35820E295B95D7008D3936 /* AppMain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
