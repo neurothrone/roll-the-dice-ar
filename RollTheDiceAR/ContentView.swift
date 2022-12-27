@@ -22,18 +22,14 @@ struct ARViewContainer: UIViewRepresentable {
   func makeUIView(context: Context) -> ARView {
     let arView = ARView(frame: .zero)
     
-    // Set up config and run session
+    //MARK: AR Config & Session
     let session = arView.session
     let config = ARWorldTrackingConfiguration()
     config.planeDetection = [.horizontal]
     session.run(config)
     
-    // Set up and add AR Coaching overlay
-    let overlay = ARCoachingOverlayView()
-    overlay.session = session
-    overlay.goal = .horizontalPlane
-    overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    arView.addSubview(overlay)
+    //MARK: ARCoachingOverlayView
+    arView.addCoachingOverlay()
     
     return arView
   }
