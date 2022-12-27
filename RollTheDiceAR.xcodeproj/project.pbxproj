@@ -11,6 +11,7 @@
 		2F358210295B95D7008D3936 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35820F295B95D7008D3936 /* ContentView.swift */; };
 		2F358212295B95D8008D3936 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F358211295B95D8008D3936 /* Assets.xcassets */; };
 		2F358215295B95D8008D3936 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F358214295B95D8008D3936 /* Preview Assets.xcassets */; };
+		2F35821C295B964C008D3936 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 2F35821B295B964C008D3936 /* Experience.rcproject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		2F35820F295B95D7008D3936 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2F358211295B95D8008D3936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F358214295B95D8008D3936 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2F35821B295B964C008D3936 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				2F35820D295B95D7008D3936 /* AppMain.swift */,
 				2F35820F295B95D7008D3936 /* ContentView.swift */,
+				2F35821B295B964C008D3936 /* Experience.rcproject */,
 				2F358211295B95D8008D3936 /* Assets.xcassets */,
 				2F358213295B95D8008D3936 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				2F358210295B95D7008D3936 /* ContentView.swift in Sources */,
 				2F35820E295B95D7008D3936 /* AppMain.swift in Sources */,
+				2F35821C295B964C008D3936 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +274,7 @@
 				DEVELOPMENT_TEAM = 4BP826FJGX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +304,7 @@
 				DEVELOPMENT_TEAM = 4BP826FJGX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to camera for AR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
