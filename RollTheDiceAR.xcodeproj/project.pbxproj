@@ -20,6 +20,10 @@
 		2F358231295BCC87008D3936 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358230295BCC87008D3936 /* HapticEngine.swift */; };
 		2FF497A8295C091F007D9FF8 /* Die.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 2FF497A7295C091F007D9FF8 /* Die.usdz */; };
 		2FF497AA295C2745007D9FF8 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF497A9295C2745007D9FF8 /* ControlView.swift */; };
+		2FF497AD295CD4BE007D9FF8 /* ui-click-43196.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF497AB295CD4BE007D9FF8 /* ui-click-43196.mp3 */; };
+		2FF497AE295CD4BE007D9FF8 /* dice-sound-40081.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2FF497AC295CD4BE007D9FF8 /* dice-sound-40081.mp3 */; };
+		2FF497B0295CDC00007D9FF8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF497AF295CDC00007D9FF8 /* AudioManager.swift */; };
+		2FF497B2295CE4F4007D9FF8 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF497B1295CE4F4007D9FF8 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		2F358230295BCC87008D3936 /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
 		2FF497A7295C091F007D9FF8 /* Die.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Die.usdz; sourceTree = "<group>"; };
 		2FF497A9295C2745007D9FF8 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
+		2FF497AB295CD4BE007D9FF8 /* ui-click-43196.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ui-click-43196.mp3"; sourceTree = "<group>"; };
+		2FF497AC295CD4BE007D9FF8 /* dice-sound-40081.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "dice-sound-40081.mp3"; sourceTree = "<group>"; };
+		2FF497AF295CDC00007D9FF8 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		2FF497B1295CE4F4007D9FF8 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +80,13 @@
 				2F35820D295B95D7008D3936 /* AppMain.swift */,
 				2F35822E295BC2B9008D3936 /* Constants.swift */,
 				2F358230295BCC87008D3936 /* HapticEngine.swift */,
+				2FF497AF295CDC00007D9FF8 /* AudioManager.swift */,
 				2F35822D295BC271008D3936 /* Views */,
 				2F35822C295BC26D008D3936 /* AR */,
 				2F358211295B95D8008D3936 /* Assets.xcassets */,
 				2FF497A7295C091F007D9FF8 /* Die.usdz */,
+				2FF497AC295CD4BE007D9FF8 /* dice-sound-40081.mp3 */,
+				2FF497AB295CD4BE007D9FF8 /* ui-click-43196.mp3 */,
 				2F358213295B95D8008D3936 /* Preview Content */,
 			);
 			path = RollTheDiceAR;
@@ -106,6 +117,7 @@
 				2F35820F295B95D7008D3936 /* ContentView.swift */,
 				2FF497A9295C2745007D9FF8 /* ControlView.swift */,
 				2F35822A295BC150008D3936 /* BottomButtonBarView.swift */,
+				2FF497B1295CE4F4007D9FF8 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,8 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F358215295B95D8008D3936 /* Preview Assets.xcassets in Resources */,
+				2FF497AD295CD4BE007D9FF8 /* ui-click-43196.mp3 in Resources */,
 				2F358212295B95D8008D3936 /* Assets.xcassets in Resources */,
 				2FF497A8295C091F007D9FF8 /* Die.usdz in Resources */,
+				2FF497AE295CD4BE007D9FF8 /* dice-sound-40081.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,11 +203,13 @@
 				2F358225295BB357008D3936 /* ARViewModel.swift in Sources */,
 				2F358210295B95D7008D3936 /* ContentView.swift in Sources */,
 				2F358229295BB38B008D3936 /* ARViewContainer.swift in Sources */,
+				2FF497B2295CE4F4007D9FF8 /* AboutView.swift in Sources */,
 				2FF497AA295C2745007D9FF8 /* ControlView.swift in Sources */,
 				2F35820E295B95D7008D3936 /* AppMain.swift in Sources */,
 				2F35822B295BC150008D3936 /* BottomButtonBarView.swift in Sources */,
 				2F358231295BCC87008D3936 /* HapticEngine.swift in Sources */,
 				2F35821E295B98C1008D3936 /* ARView+Extensions.swift in Sources */,
+				2FF497B0295CDC00007D9FF8 /* AudioManager.swift in Sources */,
 				2F35822F295BC2B9008D3936 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

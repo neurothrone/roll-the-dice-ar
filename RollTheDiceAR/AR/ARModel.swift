@@ -13,6 +13,8 @@ struct ARModel {
   private(set) var arView: ARView
   private(set) var planeEntity: ModelEntity?
   
+  var subscriptions: [Cancellable] = []
+  
   init() {
     arView = ARView(frame: .zero)
   }
@@ -54,7 +56,10 @@ struct ARModel {
     self.planeEntity = planeEntity
   }
   
-  func loadAndPlaceDie(on location: CGPoint) {
+  func loadAndPlaceDie(
+    on location: CGPoint,
+    completion: @escaping (ModelEntity?) -> Void
+  ) {
     guard let raycastResult = firstRaycastResult(on: location) else { return }
     
     // Create dice entity
@@ -68,6 +73,7 @@ struct ARModel {
 #endif
         }
         cancellable?.cancel()
+        completion(nil)
       }, receiveValue: { dieEntity in
 #if DEBUG
         print("✅ -> Model successfully loaded.")
@@ -94,6 +100,8 @@ struct ARModel {
         
         anchor.addChild(dieEntity)
         self.arView.scene.anchors.append(anchor)
+        
+        completion(dieEntity)
       })
   }
   

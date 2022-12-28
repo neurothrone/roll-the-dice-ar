@@ -35,12 +35,16 @@ final class ARViewModel: UIViewController, ObservableObject {
   @Published var showControls = true
   
   @Published var hapticEngine: HapticEngine = .init()
-  @Published var message: String = "Welcome"
+  @Published var message: String = ""
   @Published var placementMode: PlacementMode = .plane {
     didSet {
       hapticEngine.play(haptic: .selectionChanged)
     }
   }
+  
+  let audioManager: AudioManager = .init()
+  
+  var subscriptions: [Cancellable] = []
 
   var arView: ARView {
     model.arView
@@ -50,6 +54,7 @@ final class ARViewModel: UIViewController, ObservableObject {
     initARView()
     initARCoachingOverlay()
     initGestures()
+    audioManager.loadAudio()
   }
 }
 
@@ -117,6 +122,7 @@ extension ARViewModel {
     model.removeAnchors()
     sendMessage(Message.resetedScene)
     hapticEngine.play(haptic: .notificationChanged)
+    subscriptions = []
   }
   
   func interact(on location: CGPoint) {
@@ -151,12 +157,24 @@ extension ARViewModel {
   }
   
   private func placeDie(on location: CGPoint) {
-    model.loadAndPlaceDie(on: location)
+    model.loadAndPlaceDie(on: location) { dieEntity in
+      //MARK: Register subscriptions
+      let sub = self.arView.scene.subscribe(to: CollisionEvents.Began.self, on: dieEntity) { _ in
+#if DEBUG
+        print("✅ -> Collision occurred on Die")
+#endif
+      }
+      self.subscriptions.append(sub)
+    }
     sendMessage(Message.placedDie)
     hapticEngine.play(haptic: .notificationChanged)
   }
   
   private func applyForce(to modelEntity: ModelEntity) {
+    if let tapAudioResource = audioManager.tapSound {
+      modelEntity.playAudio(tapAudioResource)
+    }
+    
     model.applyForce(force, to: modelEntity)
     sendMessage(Message.rolledDice)
     hapticEngine.play(haptic: .impact)
