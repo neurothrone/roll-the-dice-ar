@@ -13,7 +13,10 @@
 		2F358215295B95D8008D3936 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F358214295B95D8008D3936 /* Preview Assets.xcassets */; };
 		2F35821C295B964C008D3936 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 2F35821B295B964C008D3936 /* Experience.rcproject */; };
 		2F35821E295B98C1008D3936 /* ARView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35821D295B98C1008D3936 /* ARView+Extensions.swift */; };
-		2F358221295B9D84008D3936 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 2F358220295B9D84008D3936 /* FocusEntity */; };
+		2F358223295BA08C008D3936 /* Dice.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 2F358222295BA08C008D3936 /* Dice.usdz */; };
+		2F358225295BB357008D3936 /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358224295BB357008D3936 /* ARViewModel.swift */; };
+		2F358227295BB35B008D3936 /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358226295BB35B008D3936 /* ARModel.swift */; };
+		2F358229295BB38B008D3936 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358228295BB38B008D3936 /* ARViewContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,10 @@
 		2F358214295B95D8008D3936 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F35821B295B964C008D3936 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		2F35821D295B98C1008D3936 /* ARView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARView+Extensions.swift"; sourceTree = "<group>"; };
+		2F358222295BA08C008D3936 /* Dice.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Dice.usdz; sourceTree = "<group>"; };
+		2F358224295BB357008D3936 /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
+		2F358226295BB35B008D3936 /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
+		2F358228295BB38B008D3936 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F358221295B9D84008D3936 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,8 +65,12 @@
 			children = (
 				2F35820D295B95D7008D3936 /* AppMain.swift */,
 				2F35820F295B95D7008D3936 /* ContentView.swift */,
+				2F358228295BB38B008D3936 /* ARViewContainer.swift */,
+				2F358224295BB357008D3936 /* ARViewModel.swift */,
+				2F358226295BB35B008D3936 /* ARModel.swift */,
 				2F35821D295B98C1008D3936 /* ARView+Extensions.swift */,
 				2F35821B295B964C008D3936 /* Experience.rcproject */,
+				2F358222295BA08C008D3936 /* Dice.usdz */,
 				2F358211295B95D8008D3936 /* Assets.xcassets */,
 				2F358213295B95D8008D3936 /* Preview Content */,
 			);
@@ -92,7 +102,6 @@
 			);
 			name = RollTheDiceAR;
 			packageProductDependencies = (
-				2F358220295B9D84008D3936 /* FocusEntity */,
 			);
 			productName = RollTheDiceAR;
 			productReference = 2F35820A295B95D7008D3936 /* RollTheDiceAR.app */;
@@ -123,7 +132,6 @@
 			);
 			mainGroup = 2F358201295B95D7008D3936;
 			packageReferences = (
-				2F35821F295B9D84008D3936 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 2F35820B295B95D7008D3936 /* Products */;
 			projectDirPath = "";
@@ -141,6 +149,7 @@
 			files = (
 				2F358215295B95D8008D3936 /* Preview Assets.xcassets in Resources */,
 				2F358212295B95D8008D3936 /* Assets.xcassets in Resources */,
+				2F358223295BA08C008D3936 /* Dice.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +160,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F358227295BB35B008D3936 /* ARModel.swift in Sources */,
+				2F358225295BB357008D3936 /* ARViewModel.swift in Sources */,
 				2F358210295B95D7008D3936 /* ContentView.swift in Sources */,
+				2F358229295BB38B008D3936 /* ARViewContainer.swift in Sources */,
 				2F35820E295B95D7008D3936 /* AppMain.swift in Sources */,
 				2F35821C295B964C008D3936 /* Experience.rcproject in Sources */,
 				2F35821E295B98C1008D3936 /* ARView+Extensions.swift in Sources */,
@@ -357,25 +369,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		2F35821F295B9D84008D3936 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		2F358220295B9D84008D3936 /* FocusEntity */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2F35821F295B9D84008D3936 /* XCRemoteSwiftPackageReference "FocusEntity" */;
-			productName = FocusEntity;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2F358202295B95D7008D3936 /* Project object */;
 }
