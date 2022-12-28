@@ -17,7 +17,8 @@ struct ARModel {
     arView = ARView(frame: .zero)
   }
   
-  func removeAnchors() {
+  mutating func removeAnchors() {
+    planeEntity = nil
     arView.scene.anchors.removeAll()
   }
   
