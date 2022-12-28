@@ -66,15 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				2F35820D295B95D7008D3936 /* AppMain.swift */,
-				2F35820F295B95D7008D3936 /* ContentView.swift */,
-				2F35822A295BC150008D3936 /* BottomButtonBarView.swift */,
-				2F358228295BB38B008D3936 /* ARViewContainer.swift */,
-				2F358224295BB357008D3936 /* ARViewModel.swift */,
-				2F358226295BB35B008D3936 /* ARModel.swift */,
-				2F35821D295B98C1008D3936 /* ARView+Extensions.swift */,
-				2F35821B295B964C008D3936 /* Experience.rcproject */,
-				2F358222295BA08C008D3936 /* Dice.usdz */,
+				2F35822D295BC271008D3936 /* Views */,
+				2F35822C295BC26D008D3936 /* AR */,
 				2F358211295B95D8008D3936 /* Assets.xcassets */,
+				2F358222295BA08C008D3936 /* Dice.usdz */,
 				2F358213295B95D8008D3936 /* Preview Content */,
 			);
 			path = RollTheDiceAR;
@@ -86,6 +81,27 @@
 				2F358214295B95D8008D3936 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2F35822C295BC26D008D3936 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				2F358228295BB38B008D3936 /* ARViewContainer.swift */,
+				2F358224295BB357008D3936 /* ARViewModel.swift */,
+				2F358226295BB35B008D3936 /* ARModel.swift */,
+				2F35821D295B98C1008D3936 /* ARView+Extensions.swift */,
+				2F35821B295B964C008D3936 /* Experience.rcproject */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		2F35822D295BC271008D3936 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F35820F295B95D7008D3936 /* ContentView.swift */,
+				2F35822A295BC150008D3936 /* BottomButtonBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
