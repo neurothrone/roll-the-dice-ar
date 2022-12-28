@@ -9,11 +9,13 @@ import ARKit
 import RealityKit
 
 extension ARView {
-  func addCoachingOverlay() {
+  func addCoachingOverlay() -> ARCoachingOverlayView {
     let overlay = ARCoachingOverlayView()
     overlay.session = self.session
     overlay.goal = .horizontalPlane
     overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     self.addSubview(overlay)
+    
+    return overlay
   }
 }

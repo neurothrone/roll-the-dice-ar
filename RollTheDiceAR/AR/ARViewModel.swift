@@ -28,18 +28,19 @@ enum Message {
   
 }
 
-final class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
+final class ARViewModel: UIViewController, ObservableObject {
   @Published private var model: ARModel = .init()
+  
+  @Published var force: Float = 2.5
+  @Published var showControls = true
+  
+  @Published var hapticEngine: HapticEngine = .init()
   @Published var message: String = "Welcome"
   @Published var placementMode: PlacementMode = .plane {
     didSet {
       hapticEngine.play(haptic: .selectionChanged)
     }
   }
-  @Published var hapticEngine: HapticEngine = .init()
-  
-  @Published var force: Float = 2.5
-  @Published var showControls = true
 
   var arView: ARView {
     model.arView
@@ -47,21 +48,30 @@ final class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
   
   func setUp() {
     initARView()
+    initARCoachingOverlay()
     initGestures()
   }
 }
 
-// MARK: - Helper Functions
+//MARK: - Helper Functions
 extension ARViewModel {
-  func sendMessage(_ message: String) {
+  private func sendMessage(_ message: String) {
     DispatchQueue.main.async {
       self.message = message
     }
   }
+  
+  private func controls(shouldShow: Bool) {
+    DispatchQueue.main.async {
+      withAnimation(.linear) {
+        self.showControls = shouldShow
+      }
+    }
+  }
 }
 
-// MARK: - AR View Functions
-extension ARViewModel: ARCoachingOverlayViewDelegate {
+//MARK: - ARSessionDelegate Methods
+extension ARViewModel: ARSessionDelegate {
   func initARView() {
     arView.session.delegate = self
     arView.automaticallyConfigureSession = false
@@ -69,17 +79,7 @@ extension ARViewModel: ARCoachingOverlayViewDelegate {
     let arConfiguration = ARWorldTrackingConfiguration()
     arConfiguration.planeDetection = [.horizontal]
     arConfiguration.environmentTexturing = .automatic
-    
-    //MARK: AR Coaching Overlay
-    arView.addCoachingOverlay()
-    let overlay = ARCoachingOverlayView()
-    overlay.session = arView.session
-    overlay.goal = .horizontalPlane
-    overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    arView.addSubview(overlay)
-    
-    overlay.delegate = self
-    
+
 //    arView.renderOptions = [.disablePersonOcclusion, .disableFaceMesh]
     
 #if DEBUG
@@ -93,25 +93,26 @@ extension ARViewModel: ARCoachingOverlayViewDelegate {
     
     arView.session.run(arConfiguration)
   }
+}
+
+//MARK: - ARCoachingOverlayViewDelegate Methods
+extension ARViewModel: ARCoachingOverlayViewDelegate {
+  func initARCoachingOverlay() {
+    let overlay = arView.addCoachingOverlay()
+    overlay.delegate = self
+  }
   
   func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-    // TODO: Hide buttons
-    DispatchQueue.main.async {
-      withAnimation(.linear) {
-        self.showControls = true
-      }
-    }
+    controls(shouldShow: true)
   }
   
   func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
-    // TODO: show buttons
-    DispatchQueue.main.async {
-      withAnimation(.linear) {
-        self.showControls = false
-      }
-    }
+    controls(shouldShow: false)
   }
-  
+}
+
+//MARK: - AR View Methods
+extension ARViewModel {
   func resetScene() {
     model.removeAnchors()
     sendMessage(Message.resetedScene)
@@ -129,20 +130,15 @@ extension ARViewModel: ARCoachingOverlayViewDelegate {
        let existingDiceEntity = hitEntity as? ModelEntity,
        existingDiceEntity.name == "dice" {
       
-      model.applyForce(force, to: existingDiceEntity)
-      sendMessage(Message.rolledDice)
-      hapticEngine.play(haptic: .impact)
-      
+      applyForce(to: existingDiceEntity)
       return
     }
     
-    model.loadAndPlaceDie(on: location)
-    sendMessage(Message.placedDie)
-    hapticEngine.play(haptic: .notificationChanged)
+    placeDie(on: location)
   }
   
   // Places a plane only if one does not exist
-  func placePlane(on location: CGPoint) {
+  private func placePlane(on location: CGPoint) {
     guard model.planeEntity == nil else {
       sendMessage(Message.planeAlreadyExists)
       hapticEngine.play(haptic: .notificationChanged, notificationType: .error)
@@ -153,9 +149,21 @@ extension ARViewModel: ARCoachingOverlayViewDelegate {
     sendMessage(Message.placedPlane)
     hapticEngine.play(haptic: .notificationChanged)
   }
+  
+  private func placeDie(on location: CGPoint) {
+    model.loadAndPlaceDie(on: location)
+    sendMessage(Message.placedDie)
+    hapticEngine.play(haptic: .notificationChanged)
+  }
+  
+  private func applyForce(to modelEntity: ModelEntity) {
+    model.applyForce(force, to: modelEntity)
+    sendMessage(Message.rolledDice)
+    hapticEngine.play(haptic: .impact)
+  }
 }
 
-// MARK: - Gesture Functions
+//MARK: - Gesture Methods
 extension ARViewModel {
   func initGestures() {
 //    let tap = UITapGestureRecognizer(
@@ -169,5 +177,4 @@ extension ARViewModel {
 //  @objc func handleTap(_ recognizer: UITapGestureRecognizer) {
 //    let tapLocation = recognizer.location(in: view)
 //  }
-  
 }
