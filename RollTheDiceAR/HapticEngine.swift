@@ -21,7 +21,7 @@ struct HapticEngine {
   func play(
     haptic: Haptic,
     intensity: CGFloat = 1,
-    notificationType: UINotificationFeedbackGenerator.FeedbackType? = nil
+    notificationType: UINotificationFeedbackGenerator.FeedbackType = .success
   ) {
     switch haptic {
     case .impact:
@@ -29,7 +29,7 @@ struct HapticEngine {
     case .selectionChanged:
       selectionGenerator.selectionChanged()
     case .notificationChanged:
-      notificationGenerator.notificationOccurred(notificationType ?? .warning)
+      notificationGenerator.notificationOccurred(notificationType)
     }
   }
 }

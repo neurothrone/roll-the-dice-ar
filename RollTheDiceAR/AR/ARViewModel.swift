@@ -84,6 +84,7 @@ extension ARViewModel {
   func resetScene() {
     model.removeAnchors()
     sendMessage(Message.resetedScene)
+    hapticEngine.play(haptic: .notificationChanged)
   }
   
   func interact(on location: CGPoint) {
@@ -106,7 +107,7 @@ extension ARViewModel {
     
     model.loadAndPlaceDie(on: location)
     sendMessage(Message.placedDie)
-    hapticEngine.play(haptic: .notificationChanged, notificationType: .success)
+    hapticEngine.play(haptic: .notificationChanged)
   }
   
   // Places a plane only if one does not exist
@@ -119,7 +120,7 @@ extension ARViewModel {
     
     model.placePlane(on: location)
     sendMessage(Message.placedPlane)
-    hapticEngine.play(haptic: .notificationChanged, notificationType: .success)
+    hapticEngine.play(haptic: .notificationChanged)
   }
 }
 
