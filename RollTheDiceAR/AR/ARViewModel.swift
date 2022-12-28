@@ -31,8 +31,13 @@ enum Message {
 final class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
   @Published private var model: ARModel = .init()
   @Published var message: String = "Welcome"
-  @Published var placementMode: PlacementMode = .plane
-  
+  @Published var placementMode: PlacementMode = .plane {
+    didSet {
+      hapticEngine.play(haptic: .selectionChanged)
+    }
+  }
+  @Published var hapticEngine: HapticEngine = .init()
+
   var arView: ARView {
     model.arView
   }
@@ -40,15 +45,6 @@ final class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
   func setUp() {
     initARView()
     initGestures()
-    
-#if DEBUG
-//    arView.debugOptions = [
-//      .showFeaturePoints,
-//      .showAnchorOrigins,
-//      .showAnchorGeometry,
-//      .showPhysics
-//    ]
-#endif
   }
 }
 
@@ -74,7 +70,12 @@ extension ARViewModel {
     arView.addCoachingOverlay()
     
 #if DEBUG
-//    arView.debugOptions = [.showFeaturePoints, .showAnchorOrigins, .showAnchorGeometry]
+//    arView.debugOptions = [
+//      .showFeaturePoints,
+//      .showAnchorOrigins,
+//      .showAnchorGeometry,
+//      .showPhysics
+//    ]
 #endif
     
     arView.session.run(arConfiguration)
@@ -98,23 +99,27 @@ extension ARViewModel {
       
       model.applyForcesToModelEntity(existingDiceEntity)
       sendMessage(Message.rolledDice)
+      hapticEngine.play(haptic: .impact)
       
       return
     }
     
     model.loadAndPlaceDie(on: location)
     sendMessage(Message.placedDie)
+    hapticEngine.play(haptic: .notificationChanged, notificationType: .success)
   }
   
   // Places a plane only if one does not exist
   func placePlane(on location: CGPoint) {
     guard model.planeEntity == nil else {
       sendMessage(Message.planeAlreadyExists)
+      hapticEngine.play(haptic: .notificationChanged, notificationType: .error)
       return
     }
     
     model.placePlane(on: location)
     sendMessage(Message.placedPlane)
+    hapticEngine.play(haptic: .notificationChanged, notificationType: .success)
   }
 }
 
