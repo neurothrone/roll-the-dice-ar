@@ -19,17 +19,22 @@ extension PlacementMode: Identifiable {
   var id: Self { self }
 }
 
+enum Message {
+  static let placedPlane = "Placed Plane"
+  static let placedDie = "Placed Die"
+  static let rolledDice = "Rolled the dice"
+  static let planeAlreadyExists = "A plane already exists"
+  static let resetedScene = "Reseted scene!"
+  
+}
+
 final class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
   @Published private var model: ARModel = .init()
-  @Published var message: String = "Message"
+  @Published var message: String = "Welcome"
   @Published var placementMode: PlacementMode = .plane
   
   var arView: ARView {
     model.arView
-  }
-  
-  func clearButtonPressed() {
-    resetScene()
   }
   
   func setUp() {
@@ -77,7 +82,7 @@ extension ARViewModel {
   
   func resetScene() {
     model.removeAnchors()
-    sendMessage("Resetted!")
+    sendMessage(Message.resetedScene)
   }
   
   func interact(on location: CGPoint) {
@@ -92,23 +97,24 @@ extension ARViewModel {
        existingDiceEntity.name == "dice" {
       
       model.applyForcesToModelEntity(existingDiceEntity)
-      sendMessage("Applied forces to Die")
+      sendMessage(Message.rolledDice)
       
       return
     }
     
     model.loadAndPlaceDie(on: location)
-    sendMessage("Placed Die")
+    sendMessage(Message.placedDie)
   }
   
   // Place a plane if one does not exist
   func placePlane(on location: CGPoint) {
     guard model.planeEntity == nil else {
-      sendMessage("A plane already exists")
+      sendMessage(Message.planeAlreadyExists)
       return
     }
     
     model.placePlane(on: location)
+    sendMessage(Message.placedPlane)
   }
 }
 
