@@ -21,6 +21,7 @@ struct ContentView: View {
         
         VStack {
           Text(arViewModel.message)
+            .font(.title3)
           
           Spacer()
           
@@ -30,7 +31,7 @@ struct ContentView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button(role: .destructive, action: arViewModel.resetScene) {
-            Image(systemName: "arrow.counterclockwise.circle.fill")
+            Image(systemName: AppMain.SystemImage.resetScene)
               .tint(.red)
           }
         }

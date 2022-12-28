@@ -18,6 +18,7 @@
 		2F358227295BB35B008D3936 /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358226295BB35B008D3936 /* ARModel.swift */; };
 		2F358229295BB38B008D3936 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358228295BB38B008D3936 /* ARViewContainer.swift */; };
 		2F35822B295BC150008D3936 /* BottomButtonBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35822A295BC150008D3936 /* BottomButtonBarView.swift */; };
+		2F35822F295BC2B9008D3936 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35822E295BC2B9008D3936 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		2F358226295BB35B008D3936 /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		2F358228295BB38B008D3936 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		2F35822A295BC150008D3936 /* BottomButtonBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonBarView.swift; sourceTree = "<group>"; };
+		2F35822E295BC2B9008D3936 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				2F35820D295B95D7008D3936 /* AppMain.swift */,
+				2F35822E295BC2B9008D3936 /* Constants.swift */,
 				2F35822D295BC271008D3936 /* Views */,
 				2F35822C295BC26D008D3936 /* AR */,
 				2F358211295B95D8008D3936 /* Assets.xcassets */,
@@ -187,6 +190,7 @@
 				2F35822B295BC150008D3936 /* BottomButtonBarView.swift in Sources */,
 				2F35821C295B964C008D3936 /* Experience.rcproject in Sources */,
 				2F35821E295B98C1008D3936 /* ARView+Extensions.swift in Sources */,
+				2F35822F295BC2B9008D3936 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
