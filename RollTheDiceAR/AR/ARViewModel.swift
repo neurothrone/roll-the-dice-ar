@@ -37,6 +37,9 @@ final class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     }
   }
   @Published var hapticEngine: HapticEngine = .init()
+  
+  @Published var force: Float = 2.5
+  @Published var showControls = true
 
   var arView: ARView {
     model.arView
@@ -58,7 +61,7 @@ extension ARViewModel {
 }
 
 // MARK: - AR View Functions
-extension ARViewModel {
+extension ARViewModel: ARCoachingOverlayViewDelegate {
   func initARView() {
     arView.session.delegate = self
     arView.automaticallyConfigureSession = false
@@ -67,7 +70,17 @@ extension ARViewModel {
     arConfiguration.planeDetection = [.horizontal]
     arConfiguration.environmentTexturing = .automatic
     
+    //MARK: AR Coaching Overlay
     arView.addCoachingOverlay()
+    let overlay = ARCoachingOverlayView()
+    overlay.session = arView.session
+    overlay.goal = .horizontalPlane
+    overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    arView.addSubview(overlay)
+    
+    overlay.delegate = self
+    
+//    arView.renderOptions = [.disablePersonOcclusion, .disableFaceMesh]
     
 #if DEBUG
 //    arView.debugOptions = [
@@ -79,6 +92,24 @@ extension ARViewModel {
 #endif
     
     arView.session.run(arConfiguration)
+  }
+  
+  func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+    // TODO: Hide buttons
+    DispatchQueue.main.async {
+      withAnimation(.linear) {
+        self.showControls = true
+      }
+    }
+  }
+  
+  func coachingOverlayViewWillActivate(_ coachingOverlayView: ARCoachingOverlayView) {
+    // TODO: show buttons
+    DispatchQueue.main.async {
+      withAnimation(.linear) {
+        self.showControls = false
+      }
+    }
   }
   
   func resetScene() {
@@ -98,7 +129,7 @@ extension ARViewModel {
        let existingDiceEntity = hitEntity as? ModelEntity,
        existingDiceEntity.name == "dice" {
       
-      model.applyForcesToModelEntity(existingDiceEntity)
+      model.applyForce(force, to: existingDiceEntity)
       sendMessage(Message.rolledDice)
       hapticEngine.play(haptic: .impact)
       

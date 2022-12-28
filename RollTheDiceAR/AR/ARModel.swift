@@ -40,6 +40,9 @@ struct ARModel {
     let planeMesh = MeshResource.generatePlane(width: 2, depth: 2)
     let material = SimpleMaterial(color: .init(white: 1.0, alpha: 0.1), isMetallic: false)
     let planeEntity = ModelEntity(mesh: planeMesh, materials: [material])
+    
+    anchor.position.y -= 0.05
+    
     planeEntity.position = anchor.position
     planeEntity.physicsBody = PhysicsBodyComponent(massProperties: .default, material: nil, mode: .static)
     planeEntity.collision = CollisionComponent(shapes: [.generateBox(width: 2, height: 0.001, depth: 2)])
@@ -56,7 +59,7 @@ struct ARModel {
     
     // Create dice entity
     var cancellable: AnyCancellable? = nil
-    cancellable = ModelEntity.loadModelAsync(named: "Dice")
+    cancellable = ModelEntity.loadModelAsync(named: "Die")
       .sink(receiveCompletion: { loadCompletion in
         // Handle errors
         if case let .failure(error) = loadCompletion {
@@ -65,7 +68,7 @@ struct ARModel {
 #endif
         }
         cancellable?.cancel()
-      }, receiveValue: { diceEntity in
+      }, receiveValue: { dieEntity in
 #if DEBUG
         print("✅ -> Model successfully loaded.")
 #endif
@@ -74,28 +77,28 @@ struct ARModel {
         let anchor = AnchorEntity(world: raycastResult.worldTransform)
 
         
-        diceEntity.scale = [0.1, 0.1, 0.1]
-        diceEntity.position = anchor.position
-        diceEntity.name = "dice"
+        dieEntity.scale = [0.05, 0.05, 0.05]
+        dieEntity.position = anchor.position
+        dieEntity.name = "dice"
         
         // Physics
-        let size = diceEntity.visualBounds(relativeTo: diceEntity).extents
+        let size = dieEntity.visualBounds(relativeTo: dieEntity).extents
         let boxShape = ShapeResource.generateBox(size: size)
-        diceEntity.collision = CollisionComponent(shapes: [boxShape])
+        dieEntity.collision = CollisionComponent(shapes: [boxShape])
 
-        diceEntity.physicsBody = PhysicsBodyComponent(
-          massProperties: .init(shape: boxShape, mass: 50),
+        dieEntity.physicsBody = PhysicsBodyComponent(
+          massProperties: .init(shape: boxShape, mass: 100),
           material: nil,
           mode: .dynamic
         )
         
-        anchor.addChild(diceEntity)
+        anchor.addChild(dieEntity)
         self.arView.scene.anchors.append(anchor)
       })
   }
   
-  func applyForcesToModelEntity(_ modelEntity: ModelEntity) {
-    modelEntity.addForce([.zero, 5, .zero], relativeTo: nil)
+  func applyForce(_ force: Float = 2.5, to modelEntity: ModelEntity) {
+    modelEntity.addForce([.zero, force, .zero], relativeTo: nil)
     modelEntity.addTorque(
       [
         Float.random(in: .zero...0.5),
