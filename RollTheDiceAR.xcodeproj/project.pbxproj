@@ -17,6 +17,7 @@
 		2F358225295BB357008D3936 /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358224295BB357008D3936 /* ARViewModel.swift */; };
 		2F358227295BB35B008D3936 /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358226295BB35B008D3936 /* ARModel.swift */; };
 		2F358229295BB38B008D3936 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F358228295BB38B008D3936 /* ARViewContainer.swift */; };
+		2F35822B295BC150008D3936 /* BottomButtonBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35822A295BC150008D3936 /* BottomButtonBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		2F358224295BB357008D3936 /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
 		2F358226295BB35B008D3936 /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		2F358228295BB38B008D3936 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
+		2F35822A295BC150008D3936 /* BottomButtonBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			children = (
 				2F35820D295B95D7008D3936 /* AppMain.swift */,
 				2F35820F295B95D7008D3936 /* ContentView.swift */,
+				2F35822A295BC150008D3936 /* BottomButtonBarView.swift */,
 				2F358228295BB38B008D3936 /* ARViewContainer.swift */,
 				2F358224295BB357008D3936 /* ARViewModel.swift */,
 				2F358226295BB35B008D3936 /* ARModel.swift */,
@@ -165,6 +168,7 @@
 				2F358210295B95D7008D3936 /* ContentView.swift in Sources */,
 				2F358229295BB38B008D3936 /* ARViewContainer.swift in Sources */,
 				2F35820E295B95D7008D3936 /* AppMain.swift in Sources */,
+				2F35822B295BC150008D3936 /* BottomButtonBarView.swift in Sources */,
 				2F35821C295B964C008D3936 /* Experience.rcproject in Sources */,
 				2F35821E295B98C1008D3936 /* ARView+Extensions.swift in Sources */,
 			);

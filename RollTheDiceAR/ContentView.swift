@@ -24,27 +24,7 @@ struct ContentView: View {
           
           Spacer()
           
-          HStack {
-            Spacer()
-            
-            Button("Place Plane", action: { arViewModel.placementMode = .plane })
-              .tint(arViewModel.placementMode == .plane ? .green : .blue)
-            
-            Spacer()
-            
-            Button("Place Die", action: { arViewModel.placementMode = .die })
-              .tint(arViewModel.placementMode == .die ? .green : .blue)
-            
-            Spacer()
-          }
-          .buttonStyle(.borderedProminent)
-          .controlSize(.large)
-          .padding()
-          .background(
-            Rectangle()
-              .fill(.ultraThinMaterial)
-              .edgesIgnoringSafeArea(.bottom)
-        )
+          BottomButtonBarView(arViewModel: arViewModel)
         }
       }
       .toolbar {
