@@ -95,12 +95,12 @@ struct ARModel {
   }
   
   func applyForcesToModelEntity(_ modelEntity: ModelEntity) {
-    modelEntity.addForce([.zero, 7, .zero], relativeTo: nil)
+    modelEntity.addForce([.zero, 5, .zero], relativeTo: nil)
     modelEntity.addTorque(
       [
-        Float.random(in: .zero...0.6),
-        Float.random(in: .zero...0.6),
-        Float.random(in: .zero...0.6)
+        Float.random(in: .zero...0.5),
+        Float.random(in: .zero...0.5),
+        Float.random(in: .zero...0.5)
       ],
       relativeTo: nil
     )
