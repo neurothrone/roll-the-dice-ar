@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BottomButtonBarView: View {
-  @ObservedObject var arViewModel: ARViewModel
+  @EnvironmentObject var arViewModel: ARViewModel
   
   var body: some View {
     HStack {
@@ -37,6 +37,7 @@ struct BottomButtonBarView: View {
 
 struct BottomButtonBarView_Previews: PreviewProvider {
   static var previews: some View {
-    BottomButtonBarView(arViewModel: .init())
+    BottomButtonBarView()
+      .environmentObject(ARViewModel())
   }
 }
