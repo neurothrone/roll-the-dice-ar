@@ -106,7 +106,7 @@ extension ARViewModel {
     sendMessage(Message.placedDie)
   }
   
-  // Place a plane if one does not exist
+  // Places a plane only if one does not exist
   func placePlane(on location: CGPoint) {
     guard model.planeEntity == nil else {
       sendMessage(Message.planeAlreadyExists)
