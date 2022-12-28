@@ -60,11 +60,15 @@ struct ARModel {
       .sink(receiveCompletion: { loadCompletion in
         // Handle errors
         if case let .failure(error) = loadCompletion {
+#if DEBUG
           print("❌ -> Failed to load model. Error: \(error)")
+#endif
         }
         cancellable?.cancel()
       }, receiveValue: { diceEntity in
+#if DEBUG
         print("✅ -> Model successfully loaded.")
+#endif
         cancellable?.cancel()
 
         let anchor = AnchorEntity(world: raycastResult.worldTransform)
@@ -91,12 +95,12 @@ struct ARModel {
   }
   
   func applyForcesToModelEntity(_ modelEntity: ModelEntity) {
-    modelEntity.addForce([.zero, 5, .zero], relativeTo: nil)
+    modelEntity.addForce([.zero, 7, .zero], relativeTo: nil)
     modelEntity.addTorque(
       [
-        Float.random(in: .zero...0.4),
-        Float.random(in: .zero...0.4),
-        Float.random(in: .zero...0.4)
+        Float.random(in: .zero...0.6),
+        Float.random(in: .zero...0.6),
+        Float.random(in: .zero...0.6)
       ],
       relativeTo: nil
     )
