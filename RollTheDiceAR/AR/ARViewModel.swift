@@ -158,14 +158,22 @@ extension ARViewModel {
   
   private func placeDie(on location: CGPoint) {
     model.loadAndPlaceDie(on: location) { dieEntity in
-      //MARK: Register subscriptions
-      let sub = self.arView.scene.subscribe(to: CollisionEvents.Began.self, on: dieEntity) { _ in
+      if let dieEntity = dieEntity {
+        //MARK: Register subscriptions
+        //MARK: Old approach
+//        let sub = self.arView.scene.subscribe(to: CollisionEvents.Began.self, on: dieEntity) { _ in
+//        }
+//        self.subscriptions.append(sub)
+        
+        //MARK: New approach: a new extension on Cancellable. Automatically unsubscribes from an event when the Entity is deactivated. Is not included for clones of the Entity
+        _ = self.arView.scene.subscribe(to: CollisionEvents.Began.self, on: dieEntity) { _ in
 #if DEBUG
-        print("✅ -> Collision occurred on Die")
+          print("✅ -> Collision occurred on Die")
 #endif
+        }.storeWhileEntityActive(dieEntity)
       }
-      self.subscriptions.append(sub)
     }
+    
     sendMessage(Message.placedDie)
     hapticEngine.play(haptic: .notificationChanged)
   }
